@@ -10,11 +10,27 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var userGuessLabel: UILabel!
+    
+    @IBOutlet weak var guessedLetterField: UITextField!
+    
+    @IBOutlet weak var guessedLetterButton: UIButton!
+    
+    @IBOutlet weak var guessCountLabel: UILabel!
+    @IBOutlet weak var playAgainButton: UIButton!
+    
+    @IBOutlet weak var flowerImageView: UIImageView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
-
+    
+    @IBAction func guessLetterButtonPressed(_ sender: Any) {
+    }
+    @IBAction func playAgainButtonPressed(_ sender: Any) {
+    }
+    
 
 }
 
