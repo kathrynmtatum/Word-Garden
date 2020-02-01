@@ -24,12 +24,29 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("In viewDidLoad, is guessedLetterField the first responder?", guessedLetterField.isFirstResponder)
     }
     
-    @IBAction func guessLetterButtonPressed(_ sender: Any) {
+    func updateUIAfterGuess() {
+        guessedLetterField.resignFirstResponder()
+        guessedLetterField.text = ""
     }
-    @IBAction func playAgainButtonPressed(_ sender: Any) {
+    @IBAction func guessedLetterFieldChanged(_ sender: UITextField) {
     }
+    
+    @IBAction func doneKeyPressed(_ sender: UITextField) {
+        updateUIAfterGuess()
+    }
+    
+    @IBAction func guessLetterButtonPressed(_ sender: UIButton) {
+        updateUIAfterGuess()
+
+    }
+    
+    @IBAction func playAgainButtonPressed(_ sender: UIButton) {
+    }
+    
+    
     
 
 }
