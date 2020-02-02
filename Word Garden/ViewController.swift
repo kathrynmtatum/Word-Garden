@@ -17,9 +17,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var playAgainButton: UIButton!
     @IBOutlet weak var flowerImageView: UIImageView!
     
+    var wordToGuess = "SWIFT"
+    var lettersGuessed = ""
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        formatUserGuessLabel()
         guessedLetterButton.isEnabled = false
         playAgainButton.isHidden = true
     }
@@ -28,6 +32,26 @@ class ViewController: UIViewController {
         guessedLetterField.resignFirstResponder()
         guessedLetterField.text = ""
     }
+    
+    func formatUserGuessLabel() {
+        var revealedWord = ""
+        lettersGuessed += guessedLetterField.text!
+        
+        for letter in wordToGuess {
+            if lettersGuessed.contains(letter) {
+                revealedWord = revealedWord + " \(letter) "
+            } else {
+                revealedWord += " _ "
+            }
+        }
+        userGuessLabel.text = revealedWord
+    }
+    
+    func guessALetter() {
+        formatUserGuessLabel()
+    }
+    
+    
     @IBAction func guessedLetterFieldChanged(_ sender: UITextField) {
         if let letterGuessed = guessedLetterField.text?.last {
             guessedLetterField.text = String(letterGuessed)
@@ -39,10 +63,12 @@ class ViewController: UIViewController {
     }
     
     @IBAction func doneKeyPressed(_ sender: UITextField) {
+        guessALetter()
         updateUIAfterGuess()
     }
     
     @IBAction func guessLetterButtonPressed(_ sender: UIButton) {
+        guessALetter()
         updateUIAfterGuess()
 
     }
